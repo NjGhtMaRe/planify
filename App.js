@@ -9,13 +9,10 @@ import {
   useColorScheme,
   View,
 } from 'react-native';
+import Onboarding from './src/screens/auth/Onboarding';
 
 function App() {
-  return (
-    <SafeAreaView>
-      <Text>Hello World!</Text>
-    </SafeAreaView>
-  );
+  return <Onboarding />;
 }
 
 export default React.memo(App);
