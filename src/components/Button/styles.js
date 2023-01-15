@@ -4,8 +4,10 @@ import colors from '../../constant/colors';
 const styles = StyleSheet.create({
   container: {
     backgroundColor: colors.purple,
-    padding: 10,
-    margin: 50,
+    padding: 13,
+    borderRadius: 12,
+    marginHorizontal: 30,
+    marginVertical: 10,
   },
   text: {
     color: colors.white,

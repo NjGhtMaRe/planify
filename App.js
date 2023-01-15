@@ -1,18 +1,28 @@
 import React from 'react';
-import type {PropsWithChildren} from 'react';
-import {
-  SafeAreaView,
-  ScrollView,
-  StatusBar,
-  StyleSheet,
-  Text,
-  useColorScheme,
-  View,
-} from 'react-native';
-import Onboarding from './src/screens/auth/Onboarding';
 
+import Onboarding from './src/screens/auth/Onboarding';
+import {NavigationContainer} from '@react-navigation/native';
+import {createStackNavigator} from '@react-navigation/stack';
+import Login from './src/screens/auth/Login';
+
+const Stack = createStackNavigator();
 function App() {
-  return <Onboarding />;
+  return (
+    <NavigationContainer>
+      <Stack.Navigator>
+        <Stack.Screen
+          options={{headerShown: false}}
+          name="Onbarding"
+          component={Onboarding}
+        />
+        <Stack.Screen
+          options={{headerShown: false}}
+          name="Login"
+          component={Login}
+        />
+      </Stack.Navigator>
+    </NavigationContainer>
+  );
 }
 
 export default React.memo(App);
