@@ -12,9 +12,9 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
     fontSize: 24,
   },
-  inputContainer: {
+  checkboxContainer: {
+    marginHorizontal: 30,
     marginVertical: 10,
-    marginBottom: 40,
   },
   textInput: {
     backgroundColor: 'rgba(0,0,0,0.15)',
@@ -32,6 +32,7 @@ const styles = StyleSheet.create({
     color: colors.purple,
     fontWeight: 'bold',
     fontSize: 16,
+    marginLeft: 4,
   },
   text: {
     fontSize: 16,

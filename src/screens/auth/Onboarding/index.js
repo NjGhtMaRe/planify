@@ -19,7 +19,9 @@ const Onboarding = ({navigation}) => {
           <Text style={styles.subtitle}>tasks and boost your productivity</Text>
           <View style={{marginTop: 15}}>
             <Button onPress={() => navigation.navigate('Login')}>Log in</Button>
-            <Button style={{backgroundColor: colors.blue}}>Get started</Button>
+            <Button type="blue" onPress={() => navigation.navigate('Signup')}>
+              Get started
+            </Button>
           </View>
         </View>
       </View>

@@ -15,6 +15,9 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
     textAlign: 'center',
   },
+  blueBg: {
+    backgroundColor: colors.blue,
+  },
 });
 
 export default styles;
