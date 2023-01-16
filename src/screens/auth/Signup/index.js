@@ -8,8 +8,12 @@ import colors from '../../../constant/colors';
 
 import styles from './styles';
 const Signup = ({navigation}) => {
-  const [email, setEmail] = useState('');
-  console.log(email);
+  const [agreed, setAgreed] = useState(false);
+
+  const onCheckBoxPress = () => {
+    setAgreed(!agreed);
+  };
+
   return (
     <SafeAreaView style={styles.container}>
       <View style={styles.header}>
@@ -23,7 +27,7 @@ const Signup = ({navigation}) => {
       <Input placeholder="Confirm Password" />
 
       <View style={styles.checkboxContainer}>
-        <Checkbox checked={true} />
+        <Checkbox checked={agreed} onPress={onCheckBoxPress} />
       </View>
       <Button type="blue">Create account</Button>
       <TouchableOpacity
