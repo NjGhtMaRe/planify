@@ -15,6 +15,7 @@ const styles = StyleSheet.create({
   checkboxContainer: {
     marginHorizontal: 30,
     marginVertical: 10,
+    flexDirection: 'row',
   },
   textInput: {
     backgroundColor: 'rgba(0,0,0,0.15)',
@@ -22,6 +23,13 @@ const styles = StyleSheet.create({
     marginHorizontal: 30,
     borderRadius: 12,
     marginVertical: 10,
+  },
+  termText: {
+    color: colors.grey,
+    fontSize: 12,
+  },
+  underline: {
+    textDecorationLine: 'underline',
   },
   footer: {
     flexDirection: 'row',

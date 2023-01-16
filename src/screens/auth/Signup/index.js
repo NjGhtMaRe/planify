@@ -27,7 +27,18 @@ const Signup = ({navigation}) => {
       <Input placeholder="Confirm Password" />
 
       <View style={styles.checkboxContainer}>
-        <Checkbox checked={agreed} onPress={onCheckBoxPress} />
+        <Checkbox
+          checked={agreed}
+          onPress={onCheckBoxPress}
+          style={{marginRight: 10}}
+        />
+        <Text style={styles.termText}>I agree to</Text>
+        <Text style={[styles.termText, styles.underline]}>
+          {' '}
+          Terms and Conditions
+        </Text>
+        <Text style={styles.termText}> and</Text>
+        <Text style={[styles.termText, styles.underline]}> Privacy Policy</Text>
       </View>
       <Button type="blue">Create account</Button>
       <TouchableOpacity
