@@ -16,6 +16,7 @@ const styles = StyleSheet.create({
     marginHorizontal: 30,
     marginVertical: 10,
     flexDirection: 'row',
+    alignItems: 'center',
   },
   textInput: {
     backgroundColor: 'rgba(0,0,0,0.15)',
@@ -28,7 +29,7 @@ const styles = StyleSheet.create({
     color: colors.grey,
     fontSize: 12,
   },
-  underline: {
+  link: {
     textDecorationLine: 'underline',
   },
   footer: {

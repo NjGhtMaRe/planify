@@ -15,8 +15,8 @@ const Login = ({navigation}) => {
         <Text style={styles.title}>Welcome back!</Text>
       </View>
       <View styles={styles.inputContainer}>
-        <Input placeholder="Email" />
-        <Input placeholder="Password" />
+        <Input placeholder="Email" keyboardType="email-address" />
+        <Input secureTextEntry={true} placeholder="Password" />
       </View>
       <Button>Log in</Button>
       <TouchableOpacity

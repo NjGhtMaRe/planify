@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CLIENT_ID</key>
+	<string>492723008508-j5ofmjo327k20d10v4q27rtcqkcrvl0a.apps.googleusercontent.com</string>
+	<key>REVERSED_CLIENT_ID</key>
+	<string>com.googleusercontent.apps.492723008508-j5ofmjo327k20d10v4q27rtcqkcrvl0a</string>
+	<key>API_KEY</key>
+	<string>AIzaSyCSv1lLjRVuTOMlH87FlX1SRYiggqv0cfs</string>
+	<key>GCM_SENDER_ID</key>
+	<string>492723008508</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>com.reactnative.planify</string>
+	<key>PROJECT_ID</key>
+	<string>planify-19bfc</string>
+	<key>STORAGE_BUCKET</key>
+	<string>planify-19bfc.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<false></false>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<true></true>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:492723008508:ios:fe7135cdef42b7ec04f879</string>
+</dict>
+</plist>
