@@ -1,5 +1,12 @@
 import React, {useState} from 'react';
-import {Text, SafeAreaView, View, Linking} from 'react-native';
+import {
+  Text,
+  SafeAreaView,
+  View,
+  Linking,
+  Alert,
+  ScrollView,
+} from 'react-native';
 import {TouchableOpacity} from 'react-native-gesture-handler';
 import Button from '../../../components/Button';
 import Checkbox from '../../../components/Checkbox';
@@ -10,9 +17,7 @@ import auth from '@react-native-firebase/auth';
 import styles from './styles';
 const Signup = ({navigation}) => {
   const [agreed, setAgreed] = useState(false);
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
-  console.log('Email: ', email);
+  const [values, setValues] = useState({});
 
   const onCheckBoxPress = () => {
     setAgreed(!agreed);
@@ -22,19 +27,33 @@ const Signup = ({navigation}) => {
     Linking.openURL(url);
   };
 
-  const submitRegister = () => {
+  const onChange = (value, key) => {
+    setValues(vals => ({
+      ...vals,
+      [key]: value,
+    }));
+  };
+  Alert.alert(values);
+  const onSubmit = () => {
+    if (values.password !== values.confirm_password) {
+      Alert.alert('Password does not match');
+      return;
+    }
+    if (!agreed) {
+      Alert.alert('You have not agree with the Terms');
+    }
     auth()
-      .createUserWithEmailAndPassword(email, password)
+      .createUserWithEmailAndPassword(values.email, values.password)
       .then(() => {
-        console.log('User account created & signed in!');
+        Alert.alert('You have successfully registered!');
       })
       .catch(error => {
         if (error.code === 'auth/email-already-in-use') {
-          console.log('That email address is already in use!');
+          Alert.alert('That email address is already in use!');
         }
 
         if (error.code === 'auth/invalid-email') {
-          console.log('That email address is invalid!');
+          Alert.alert('That email address is invalid!');
         }
 
         console.error(error);
@@ -42,60 +61,67 @@ const Signup = ({navigation}) => {
   };
   return (
     <SafeAreaView style={styles.container}>
-      <View style={styles.header}>
-        <Text style={styles.title}>Join the hub!</Text>
-      </View>
+      <ScrollView>
+        <View style={styles.header}>
+          <Text style={styles.title}>Join the hub!</Text>
+        </View>
 
-      <Input placeholder="First name" />
-      <Input placeholder="Last name" />
-      <Input
-        placeholder="Email"
-        keyboardType="email-address"
-        onChangeText={setEmail}
-      />
-      <Input
-        secureTextEntry={true}
-        textContentType="newPassword"
-        placeholder="Password"
-        onChangeText={setPassword}
-      />
-      <Input
-        secureTextEntry={true}
-        textContentType="newPassword"
-        placeholder="Confirm Password"
-      />
-
-      <View style={styles.checkboxContainer}>
-        <Checkbox
-          checked={agreed}
-          onPress={onCheckBoxPress}
-          style={{marginRight: 10}}
+        <Input
+          onChangeText={vals => onChange(vals, 'first_name')}
+          placeholder="First name"
         />
-        <Text style={styles.termText}>I agree to</Text>
-        <Text
-          onPress={() => onLinkPress(TERM_LINK)}
-          style={[styles.termText, styles.link]}>
-          {' '}
-          Terms and Conditions
-        </Text>
-        <Text style={styles.termText}> and</Text>
-        <Text
-          onPress={() => onLinkPress(PRIVACY_LINK)}
-          style={[styles.termText, styles.link]}>
-          {' '}
-          Privacy Policy
-        </Text>
-      </View>
-      <Button onPress={submitRegister()} type="blue">
-        Create account
-      </Button>
-      <TouchableOpacity
-        style={styles.footer}
-        onPress={() => navigation.navigate('Login')}>
-        <Text style={styles.text}>Already Registered?</Text>
+        <Input
+          onChangeText={vals => onChange(vals, 'last_name')}
+          placeholder="Last name"
+        />
+        <Input
+          onChangeText={vals => onChange(vals, 'email')}
+          placeholder="Email"
+          keyboardType="email-address"
+        />
+        <Input
+          onChangeText={vals => onChange(vals, 'password')}
+          secureTextEntry={true}
+          placeholder="Password"
+        />
+        <Input
+          onChangeText={vals => onChange(vals, 'confirm_password')}
+          secureTextEntry={true}
+          placeholder="Confirm Password"
+        />
 
-        <Text style={styles.linkText}> Sign in!</Text>
-      </TouchableOpacity>
+        <View style={styles.checkboxContainer}>
+          <Checkbox
+            checked={agreed}
+            onPress={onCheckBoxPress}
+            style={{marginRight: 10}}
+          />
+          <Text style={styles.termText}>I agree to</Text>
+          <Text
+            onPress={() => onLinkPress(TERM_LINK)}
+            style={[styles.termText, styles.link]}>
+            {' '}
+            Terms and Conditions
+          </Text>
+          <Text style={styles.termText}> and</Text>
+          <Text
+            onPress={() => onLinkPress(PRIVACY_LINK)}
+            style={[styles.termText, styles.link]}>
+            {' '}
+            Privacy Policy
+          </Text>
+        </View>
+        <Button onPress={onSubmit} type="blue">
+          Create account
+        </Button>
+        <TouchableOpacity
+          style={styles.footer}
+          onPress={() => navigation.navigate('Login')}>
+          <Text style={styles.text}>Already Registered?</Text>
+
+          <Text style={styles.linkText}> Sign in!</Text>
+        </TouchableOpacity>
+      </ScrollView>
     </SafeAreaView>
   );
 };
