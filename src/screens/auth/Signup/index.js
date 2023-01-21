@@ -33,8 +33,11 @@ const Signup = ({navigation}) => {
       [key]: value,
     }));
   };
-  Alert.alert(values);
   const onSubmit = () => {
+    if (!values.first_name || !values.last_name) {
+      Alert.alert('Please enter first name and last name');
+      return;
+    }
     if (values.password !== values.confirm_password) {
       Alert.alert('Password does not match');
       return;
@@ -45,7 +48,9 @@ const Signup = ({navigation}) => {
     auth()
       .createUserWithEmailAndPassword(values.email, values.password)
       .then(() => {
-        Alert.alert('You have successfully registered!');
+        auth().currentUser.updateProfile({
+          displayName: `${values.first_name} ${values.last_name}`,
+        });
       })
       .catch(error => {
         if (error.code === 'auth/email-already-in-use') {
