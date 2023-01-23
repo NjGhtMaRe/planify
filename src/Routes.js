@@ -3,14 +3,17 @@ import React, {useEffect, useState} from 'react';
 import {View, Text, SafeAreaView, Alert} from 'react-native';
 import Onboarding from './screens/auth/Onboarding';
 import auth from '@react-native-firebase/auth';
-
 import {createStackNavigator} from '@react-navigation/stack';
+import {createDrawerNavigator} from '@react-navigation/drawer';
+
 import Login from './screens/auth/Login';
 import Signup from './screens/auth/Signup';
 import Home from './screens/mainscreen/Home';
 
 const Stack = createStackNavigator();
-function Routes({navigation}) {
+const Drawer = createDrawerNavigator();
+
+const Routes = ({navigation}) => {
   // Set an initializing state whilst Firebase connects
   const [initializing, setInitializing] = useState(true);
   const [user, setUser] = useState();
@@ -33,7 +36,11 @@ function Routes({navigation}) {
   }
 
   if (user) {
-    navigation.navigate('Home');
+    return (
+      <Drawer.Navigator>
+        <Drawer.Screen name="Home" component={Home} />
+      </Drawer.Navigator>
+    );
     // const logout = () => {
     //   auth()
     //     .signOut()
@@ -55,9 +62,8 @@ function Routes({navigation}) {
       <Stack.Screen name="Onbarding" component={Onboarding} />
       <Stack.Screen name="Login" component={Login} />
       <Stack.Screen name="Signup" component={Signup} />
-      <Stack.Screen name="Home" component={Home} />
     </Stack.Navigator>
   );
-}
+};
 
 export default React.memo(Routes);
