@@ -5,9 +5,6 @@ import styles from './styles';
 const Home = ({navigation}) => {
   return (
     <SafeAreaView>
-      <View style={styles.header}>
-        <Text>Home</Text>
-      </View>
       <Text style={styles.title}>Daily Tasks:</Text>
       <View style={styles.body}>
         <View style={styles.taskContainer}>
